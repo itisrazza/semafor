@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bedroom Traffic Light</title>
+    <link rel="stylesheet" href="static/style.css" />
+    <script src="static/script.js" defer></script>
+  </head>
+  <body>
+    <div id="controls">
+      <main class="traffic-light">
+        <div class="main-body">
+          {% for color, state in lights.items() %}
+          <div data-light="{{color}}" data-state="{{state}}">
+            <img src="static/{{color}}.svg" alt="" height="100" width="100" />
+          </div>
+          {% endfor %}
+        </div>
+      </main>
+      <aside class="switchers">
+        {% for color in lights %}
+        <div class="switcher">
+          <button type="button" data-color="{{color}}" data-state="on">
+            On
+          </button>
+          <button type="button" data-color="{{color}}" data-state="blink">
+            Blink
+          </button>
+          <button type="button" data-color="{{color}}" data-state="off">
+            Off
+          </button>
+        </div>
+        {% endfor %}
+      </aside>
+    </div>
+    <div id="exclusive">
+      <label>
+        <input type="checkbox" id="exclusive-mode" /> Exclusive Mode
+      </label>
+    </div>
+  </body>
+</html>
