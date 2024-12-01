@@ -35,7 +35,7 @@ def update():
     if body["color"] not in LIGHT_COLORS:
         return abort(400)
 
-    if body["state"] not in LEDState:
+    if LEDState(body["state"]) not in LEDState:
         return abort(400)
 
     if body.get("exclusive", False) is True:
